@@ -33,15 +33,15 @@ import extractPartName from "./Utils/extractPartName";
 import extractProjectName from "./Utils/extractProjectName";
 import catiaAptToGCode from "./Utils/catiaAptToGCode";
 
-const inputFile = `./Input/477Z3202_202_PROB_A.aptsource`;
-const outputFile = "./Output/477Z3202_202_BROB_A.MPF";
+let inputFilePath: string;
+let outputFilePath: string;
 
 console.log(
   '👋 This message is being logged by "renderer.ts", included via Vite'
 );
 
 async function main() {
-  fs.readFile(inputFile, "utf8", (err: any, data: string) => {
+  fs.readFile(inputFilePath, "utf8", (err: any, data: string) => {
     if (err) {
       console.error("Error reading input file:", err);
       return;
@@ -70,7 +70,7 @@ async function main() {
 
     const finalGCode = headerInfo + gCode;
 
-    fs.writeFile(outputFile, finalGCode, (err: any) => {
+    fs.writeFile(outputFilePath, finalGCode, (err: any) => {
       if (err) {
         console.error("Error writing output file:", err);
         return;
@@ -80,7 +80,18 @@ async function main() {
   });
 }
 
+document.getElementById("file").addEventListener("change", (event) => {
+  const inputFile = event.target as HTMLInputElement;
+  const inputFileName = inputFile.files[0].name;
+  inputFilePath = inputFile.files[0].path;
+  outputFilePath =
+    inputFilePath.substring(0, inputFilePath.lastIndexOf("\\") + 1) +
+    inputFileName.replace(".aptsource", ".MPF");
+
+  console.log("INPUT FILE NAME:", inputFilePath);
+  console.log("OUTPUT FILE NAME", outputFilePath);
+});
+
 document.getElementById("btn").addEventListener("click", async () => {
-  console.log("HELLO WORLD!!!");
   await main();
 });
