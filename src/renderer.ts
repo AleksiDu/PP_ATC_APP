@@ -29,6 +29,8 @@
 import "./index.css";
 // import * as fs from "fs";
 const fs = window.require("fs");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const { shell } = require("electron");
 import extractPartName from "./Utils/extractPartName";
 import extractProjectName from "./Utils/extractProjectName";
 import catiaAptToGCode from "./Utils/catiaAptToGCode";
@@ -94,4 +96,9 @@ document.getElementById("file").addEventListener("change", (event) => {
 
 document.getElementById("btn").addEventListener("click", async () => {
   await main();
+  console.log(
+    "file:///" + inputFilePath.substring(0, inputFilePath.lastIndexOf("\\") + 1)
+  );
+  shell.showItemInFolder(outputFilePath);
+  shell.openExternal(outputFilePath);
 });
