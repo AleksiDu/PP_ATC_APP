@@ -12,9 +12,11 @@ PP_ATC_APP is a program designed to generate Sinumerick measuring G-code with cy
 
 ## Installation
 
-1. Download the executable from the PP_ATC folder.
-2. Install the program.
-3. Run the program.
+1. NPM install
+2. npm run make
+3. run the executable from the out folder.
+4. Install the program.
+5. Run the program.
 
 ## Usage
 
