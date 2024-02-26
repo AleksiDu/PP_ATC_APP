@@ -1,10 +1,10 @@
 # PP_ATC_APP
 
-PP_ATC_APP is a program designed to generate Sinumerick measuring G-code with cycles from CATIA aptsource files.
+PP_ATC_APP is a program designed to generate Sinumerik measuring G-code with cycles from CATIA aptsource files.
 
 ## Features
 
-- Generates Sinumerick measuring G-code with cycles from CATIA aptsource files.
+- Generates Sinumerik measuring G-code with cycles from CATIA aptsource files.
 - Supports multi-points probing in Catia machining.
 - Requires selection of the Post processor words table IMS.pptable.
 - Automatically opens the file location after successful generation.
@@ -39,7 +39,7 @@ GOTO / 635.21944, -75.13133, 19.00000, 0.000000, 0.000000, 1.000000
 PROBE/OFF
 ```
 
-### Sinumerick G-code
+### Sinumerik G-code
 
 ```
 CYCLE978(0,1,,1,19,100,100,3,2,1,"",,0,1.01,-1.01,,0.34,1,0,,1,0)
